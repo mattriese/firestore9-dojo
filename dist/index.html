@@ -8,7 +8,7 @@
   </head>
   <body>
     <h1>Getting started with firebase 9</h1>
-
+    <h3>firebase firestore</h3>
     <form class="add">
       <label for="title">Title:</label>
       <input type="text" name="title" required />
@@ -28,6 +28,7 @@
       <input type="text" name="title" required />
       <button>update a book title</button>
     </form>
+    <h3>firebase auth</h3>
     <form class="signup">
       <label for="email">email:</label>
       <input type="text" name="email" required />
@@ -35,6 +36,15 @@
       <input type="text" name="password" required />
       <button>signup</button>
     </form>
+    <form class="login">
+      <label for="email">email:</label>
+      <input type="text" name="email" required />
+      <label for="password">password:</label>
+      <input type="text" name="password" required />
+      <button>login</button>
+    </form>
+    <button class="logout">logout</button>
+    <button class="unsub">unsubscribe from db/auth data</button>
     <script src="bundle.js"></script>
   </body>
 </html>
