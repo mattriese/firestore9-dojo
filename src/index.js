@@ -11,6 +11,7 @@ import {
   where,
   orderBy,
   serverTimestamp,
+  getDoc,
 } from 'firebase/firestore';
 
 const firebaseConfig = {
@@ -35,6 +36,8 @@ const colRef = collection(db, 'books');
 const q = query(colRef, orderBy('createdAt'));
 
 // get real time collection data
+// callback function to onSnapshot takes the snapshot and is called
+// whenever the data changes in firestore (and once initially)
 onSnapshot(q, (snapshot) => {
   let books = [];
   snapshot.docs.forEach((doc) => {
@@ -76,3 +79,14 @@ deleteBookForm.addEventListener('submit', (e) => {
   const docRef = doc(db, 'books', bookID);
   deleteDoc(docRef).then(() => deleteBookForm.reset());
 });
+
+// getting single doc
+const docRef = doc(db, 'books', 'x4hLTwzoGDBoEoMnegoi');
+
+// getDoc(docRef)
+// .then((doc) => {
+//   console.log(doc.data(), doc.id)
+// })
+
+// get realtime data from single doc
+onSnapshot(docRef, (doc) => console.log(doc.data(), doc.id));
