@@ -12,6 +12,7 @@ import {
   orderBy,
   serverTimestamp,
   getDoc,
+  updateDoc,
 } from 'firebase/firestore';
 
 const firebaseConfig = {
@@ -90,3 +91,14 @@ const docRef = doc(db, 'books', 'x4hLTwzoGDBoEoMnegoi');
 
 // get realtime data from single doc
 onSnapshot(docRef, (doc) => console.log(doc.data(), doc.id));
+
+// update a doc
+const updateForm = document.querySelector('.update');
+updateForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const docRef = doc(db, 'books', updateForm.id.value);
+  updateDoc(docRef, {
+    title: updateForm.title.value,
+  }).then(() => updateForm.reset());
+});
